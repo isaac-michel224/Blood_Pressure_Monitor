@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Re</title>
+</head>
+<body>
+
+<div class="list-group" th:each="record:${records}">
+    <div class="list-group-item list-group-item-action mt-2 shadow-sm">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 style="margin:inherit;">@<span th:text="${record.id}"></span></h5>
+        </div>
+        <small th:text="${record.recordedAt}"></small>
+        <p class="mb-1" th:utext="${record.systolic}" +"" + "/" + "" + "${record.diastolic}"></p>
+    </div>
+</div>
+
+</body>
+</html>
