@@ -57,7 +57,7 @@ public class ThymeleafConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers().hasAnyAuthority("USER").anyRequest()
                 .authenticated().and().csrf().disable().formLogin()
                         .loginPage("/login").failureUrl("/login?error=true")
-                .defaultSuccessUrl("/users")
+                .defaultSuccessUrl("/info")
                         .and().logout();
         http.headers().frameOptions().disable();
     }

@@ -30,10 +30,7 @@ public class EndUserController {
     }
 
 
-
-
-
-    @GetMapping("/endusers/{username}")
+    @GetMapping("/endusers")
     public String getEndUser(@PathVariable String LastName, Model model) {
         EndUser enduser = enduserService.findByLastName(LastName);
         EndUser patients = enduserService.findByLastName(LastName);

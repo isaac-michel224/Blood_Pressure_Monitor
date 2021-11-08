@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RecordController {
@@ -26,6 +28,8 @@ private RecordRepository recordRepository;
     public String BloodPressureInfo() {
         return "info";
     }
+
+
 
     @GetMapping("/all")
     public String getAllRecords(Model model) {
@@ -51,4 +55,29 @@ private RecordRepository recordRepository;
 
     //Get Back Readings of Blood Pressure and what it Means
 
+
+    //Request Mapping section
+
+    @RequestMapping("/info")
+    public ModelAndView info() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("info");
+        return mv;
+    }
+
+
+    @RequestMapping("/all")
+    public ModelAndView allRecords() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("all-records");
+        return mv;
+    }
+
+
+    @RequestMapping("/endusers")
+    public ModelAndView profile() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("UserProfile");
+        return mv;
+    }
 }

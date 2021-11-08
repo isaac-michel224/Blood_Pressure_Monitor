@@ -62,5 +62,5 @@ public class EndUser {
         return Objects.hash(id, firstName, lastName, email, password, enrolled);
     }
 
-
+//Admin page for Patient
 }

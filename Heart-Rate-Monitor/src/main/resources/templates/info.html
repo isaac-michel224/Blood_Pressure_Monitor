@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Bootstrap Example</title>
+    <title>What is Blood Pressure?</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -38,9 +38,9 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
 <!--                <li class="active"><a href="#">Dashboard</a></li>-->
-                <li><a href="UserProfile.html">Profile</a></li>
-                <li><a href="info.html">What is Blood Pressure?</a></li>
-                <li><a href="all.html">History</a></li>
+                <li><a th:href="@{/endusers}">Profile</a></li>
+                <li><a th:href="@{/info}">What is Blood Pressure?</a></li>
+                <li><a th:href="@{/all}">History</a></li>
 <!--                <li><a href="#">Help</a></li>-->
             </ul>
         </div>
@@ -50,12 +50,12 @@
 <div class="container-fluid">
     <div class="row content">
         <div class="col-sm-3 sidenav hidden-xs">
-            <h2>Logo</h2>
+            <h2>Pressure.</h2>
             <ul class="nav nav-pills nav-stacked">
 <!--                <li class="active"><a href="#section1">Dashboard</a></li>-->
-                <li><a href="UserProfile.html">Profile</a></li>
-                <li><a href="info.html">What is Blood Pressure?</a></li>
-                <li><a href="all.html">History</a></li>
+                <li><a th:href="@{/endusers}">Profile</a></li>
+                <li><a th:href="@{/info}">What is Blood Pressure?</a></li>
+                <li><a th:href="@{/all}">History</a></li>
 <!--                <li><a href="#section3">Help</a></li>-->
 
             </ul><br>
@@ -67,8 +67,8 @@
 
 <!--                <p>Some text..</p>-->
 
-               <img src="blood-pressure-chart.jpg"  width="480" height="370">
-             <img src="blood-pressure-chart-by-age.jpg"  width="480" height="370">
+               <img src="blood-pressure-chart.jpg"  width="480" height="400">
+             <img src="blood-pressure-chart-by-age.jpg"  width="480" height="400">
 
 
             <style>
@@ -117,13 +117,13 @@
                     </div>
                 </div>
 
-                <div class="col-sm-3">
-                    <div class="well">
-                        <h4>Bounce</h4>
-                        <p>30%</p>
-                    </div>
-                </div>
-            </div>
+<!--                <div class="col-sm-3">-->
+<!--                    <div class="well">-->
+<!--                        <h4>Bounce</h4>-->
+<!--                        <p>30%</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
 
             </div>
