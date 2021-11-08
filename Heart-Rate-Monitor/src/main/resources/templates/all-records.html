@@ -2,9 +2,52 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Re</title>
 </head>
+
 <body>
+
+<nav class="navbar navbar-inverse visible-xs">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Welcome to Pressure.</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Dashboard</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">What is Blood Pressure?</a></li>
+                <li><a href="#">History</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 sidenav hidden-xs">
+            <h2>Logo</h2>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#section1">Dashboard</a></li>
+                <li><a href="#section2">Profile</a></li>
+                <li><a href="#section3">What is Blood Pressure?</a></li>
+                <li><a href="#section3">History</a></li>
+                <li><a href="#section3">Help</a></li>
+
+            </ul><br>
+        </div>
+        <br>
 
 <div class="list-group" th:each="record:${records}">
     <div class="list-group-item list-group-item-action mt-2 shadow-sm">
@@ -12,7 +55,7 @@
             <h5 style="margin:inherit;">@<span th:text="${record.id}"></span></h5>
         </div>
         <small th:text="${record.recordedAt}"></small>
-        <p class="mb-1" th:utext="${record.systolic}" +"" + "/" + "" + "${record.diastolic}"></p>
+        <p class="mb-1" th:utext="${record.systolic + '/' + record.diastolic}"></p>
     </div>
 </div>
 
