@@ -6,7 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,11 +53,25 @@ public class EndUserController {
 
         return "LastNames";
     }
+
+
+    //Request Mapping section
+
+    @RequestMapping("/endusers")
+    public ModelAndView profile() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("UserProfile");
+        return mv;
+    }
+
+
     }
 
     // https://www.w3schools.in/java-tutorial/decision-making/else-if/
 // https://docs.oracle.com/javase/8/docs/
 // https://github.com/topics/blood-pressure?l=java
+
+
 
 
 

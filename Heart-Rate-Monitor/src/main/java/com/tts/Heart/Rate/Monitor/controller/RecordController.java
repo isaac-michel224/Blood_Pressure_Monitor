@@ -39,7 +39,7 @@ private RecordRepository recordRepository;
 
 
 // Insert Blood Pressure values from test
-    @PostMapping("/blood-pressure-monitor/insert")
+    @PostMapping("/insert")
     public String BloodPressureForm(Model model) {
         model.addAttribute("blood pressure", new Record());
         return "recent BP reading";
@@ -47,7 +47,7 @@ private RecordRepository recordRepository;
 
 
     //Save Blood Pressure values into system (on calender)
-    @PostMapping("/blood-pressure-monitor/readings")
+    @PostMapping("/readings")
     public String submitBloodPressure(Model model, Record record) {
     recordRepository.save(record);
         return "save";
@@ -74,10 +74,19 @@ private RecordRepository recordRepository;
     }
 
 
-    @RequestMapping("/endusers")
-    public ModelAndView profile() {
+ @RequestMapping("/insert")
+    public ModelAndView form() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("UserProfile");
+        mv.setViewName("/blood-pressure/insert");
+        return mv;
+ }
+
+    @RequestMapping("/readings")
+    public ModelAndView submit() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/readings");
         return mv;
     }
+
+
 }
