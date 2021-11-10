@@ -3,18 +3,31 @@ import com.tts.Heart.Rate.Monitor.model.Record;
 
 import com.tts.Heart.Rate.Monitor.repository.RecordRepository;
 import com.tts.Heart.Rate.Monitor.service.EndUserService;
+import com.tts.Heart.Rate.Monitor.service.RecordService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class RecordController {
 
     //Create New Blood Pressure Form
 //    @GetMapping("/blood-pressure-monitor/new")
+
+    @ModelAttribute(name="records")
+    public List<Record> records() {
+        return (List<Record>) recordRepository.findAll();
+    }
+
+    @Autowired
+    RecordService recordService;
 
     private EndUserService enduserService;
 private RecordRepository recordRepository;
@@ -70,6 +83,7 @@ private RecordRepository recordRepository;
     public ModelAndView allRecords() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("all-records");
+        mv.addObject("service", recordService);
         return mv;
     }
 
@@ -87,6 +101,15 @@ private RecordRepository recordRepository;
         mv.setViewName("/readings");
         return mv;
     }
+
+
+//    @GetMapping("/rest/all")
+//    @ResponseBody
+//    public List<Record> getAll() {
+//
+//        return (List<Record>) recordRepository.findAll();
+//    }
+
 
 
 }
