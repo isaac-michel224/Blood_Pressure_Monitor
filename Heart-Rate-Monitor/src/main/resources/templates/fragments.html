@@ -1,0 +1,7 @@
+<div th:fragment="date (dayNumber)" xmlns:th="http://www.w3.org/1999/xhtml">
+    <small th:text="${dayNumber}"></small>
+    <div th:if="${@recordService.checkIfCurrentDate(dayNumber).getRecordedAt().getDate()} == ${dayNumber}">
+        <p th:text="${#dates.format(@recordService.checkIfCurrentDate(dayNumber).getRecordedAt(), 'HH:mm')}"></p>
+        <p th:text="${recordService.checkIfCurrentDate(dayNumber).diastolic} + '/' + ${recordService.checkIfCurrentDate(dayNumber).getSystolic()}"></p>
+        </div>
+</div>

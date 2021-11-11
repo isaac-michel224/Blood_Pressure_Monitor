@@ -2,10 +2,13 @@ package com.tts.Heart.Rate.Monitor.model;
 
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.Collection;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,11 +18,12 @@ import java.util.Set;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class EndUser {
+@Table(name = "USER")
+public class EndUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "user_id")
     private Long id;
 
     @NotEmpty(message = "Must provide first name")
@@ -33,8 +37,10 @@ public class EndUser {
     private String email;
 
     @Length(min=10, message="minimum of 10 characters")
-    @Length(max=20,  message="maximum of 20 characters")
+    @Length(max=60,  message="maximum of 60 characters")
     private String password;
+
+    private String username;
 
 //    @OneToOne(mappedBy= "enduser")
 //    private Patient patient;
@@ -42,7 +48,16 @@ public class EndUser {
     @OneToMany(mappedBy="enduser")
     private Set<Record> records;
 
+    @Column(name = "enabled")
     private int enrolled; // "0" not in system -- "1" in system
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @ToString.Exclude
+    private Set<Role> roles;
+
+    private int active;
 
     @Override
     public boolean equals(Object o) {
@@ -62,5 +77,39 @@ public class EndUser {
         return Objects.hash(id, firstName, lastName, email, password, enrolled);
     }
 
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
 //Admin page for Patient
 }

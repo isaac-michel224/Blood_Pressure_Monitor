@@ -9,6 +9,37 @@
     <title>Records</title>
 </head>
 
+
+<style>
+<!--    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */-->
+<!--    .row.content {height: 550px}-->
+
+<!--    /* Set gray background color and 100% height */-->
+<!--    .sidenav {-->
+<!--      background-color: #f1f1f1;-->
+<!--      height: 100%;-->
+<!--    }-->
+
+<!--    /* On small screens, set height to 'auto' for the grid */-->
+<!--    @media screen and (max-width: 767px) {-->
+<!--      .row.content {height: auto;}-->
+
+
+      td {
+        border: black solid 3px;
+        padding: 1rem;
+        height: 10rem;
+        width: 10rem;
+        }
+
+        .table>thead>tr>th {
+        vertical-align: button;
+        border-bottom: 2px solid black;
+        }
+
+
+  </style>
+
 <body>
 
 <nav class="navbar navbar-inverse visible-xs">
@@ -34,9 +65,9 @@
 </nav>
 
 
-<div class="container-fluid">
-    <div class="row content">
-        <div class="col-sm-3 sidenav hidden-xs">
+<div class="container-fluid" style="padding:0">
+    <div class="row content d-flex" style="display:flex;">
+        <div class="col-sm-3 sidenav hidden-xs" style="height:100vw; max-width:max-content;">
             <h2>Pressure.</h2>
             <ul class="nav nav-pills nav-stacked">
 <!--                <li class="active"><a href="#section1">Dashboard</a></li>-->
@@ -47,18 +78,99 @@
 
             </ul><br>
         </div>
-        <br>
-    </div>
-<div class="list-group" th:each="record:${records}">
-    <div class="list-group-item list-group-item-action mt-2 shadow-sm">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 style="margin:inherit;">@<span th:text="${record.id}"></span></h5>
-        </div>
-        <small th:text="${record.recordedAt}"></small>
-        <p class="mb-1" th:utext="${record.systolic + '/' + record.diastolic}"></p>
-    </div>
-</div>
-</div>
 
+        <div class="col container">
+
+            <h1>November 2021</h1>
+
+            <table class="table border border-dark">
+
+            </table>
+            <thead>
+            <tr class="border border-3 border-dark">
+                <th scope="col">Sunday</th>
+                <th scope="col">Monday</th>
+                <th scope="col">Tuesday</th>
+                <th scope="col">Wednesday</th>
+                <th scope="col">Thursday</th>
+                <th scope="col">Friday</th>
+                <th scope="col">Saturday</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr>
+                <td scope="row"></td>
+                <td>
+                    <div th:replace="fragments.html :: date(dayNumber'1')"></div>
+                </td>
+
+                <td><div th:replace="fragments.html :: date(dayNumber='2')"></div></td>
+
+                <td><div th:replace="fragments.html :: date(dayNumber='3')"></div></td>
+                <td><div th:replace="fragments.html :: date(dayNumber='4')"></div></td>
+                <td><div th:replace="fragments.html :: date(dayNumber='5')"></div></td>
+                <td><div th:replace="fragments.html :: date(dayNumber='6')"></div></td>
+            </tr>
+
+            <tr>
+                <td scope="row"><div th:replace="fragments.html :: date(dayNumber='7')"></div></td>
+                <td><div th:replace="fragments.html :: date(dayNumber='8')"></div></td>
+                <td ><div th:replace="fragments.html :: date(dayNumber='9')"></div></td>
+                <td ><div th:replace="fragments.html :: date(dayNumber='10')"></div></td>
+                <td><div th:replace="fragments.html :: date(dayNumber='11')"></div></td>
+                <td ><div th:replace="fragments.html :: date(dayNumber='12')"></div></td>
+                <td ><div th:replace="fragments.html :: date(dayNumber='13')"></div></td>
+            </tr>
+
+            <tr>
+                <td scope="row"><div th:replace="fragments.html :: date(dayNumber='14')"></div></td>
+                <td><div th:replace="fragments.html :: date(dayNumber='15')"></div></td>
+                <td ><div th:replace="fragments.html :: date(dayNumber='16')"></div></td>
+                <td ><div th:replace="fragments.html :: date(dayNumber='17')"></div></td>
+                <td><div th:replace="fragments.html :: date(dayNumber='18')"></div></td>
+                <td ><div th:replace="fragments.html :: date(dayNumber='19')"></div></td>
+                <td ><div th:replace="fragments.html :: date(dayNumber='20')"></div></td>
+            </tr>
+
+            <tr>
+                <td scope="row"><div th:replace="fragments.html :: date(dayNumber='21')"></div></td>
+                <td><div th:replace="fragments.html :: date(dayNumber='22')"></div></td>
+                <td ><div th:replace="fragments.html :: date(dayNumber='23')"></div></td>
+                <td ><div th:replace="fragments.html :: date(dayNumber='24')"></div></td>
+                <td><div th:replace="fragments.html :: date(dayNumber='25')"></div></td>
+                <td ><div th:replace="fragments.html :: date(dayNumber='26')"></div></td>
+                <td ><div th:replace="fragments.html :: date(dayNumber='27')"></div></td>
+            </tr>
+
+            <tr>
+                <td scope="row"><div th:replace="fragments.html :: date(dayNumber='28')"></div></td>
+                <td><div th:replace="fragments.html :: date(dayNumber='29')"></div></td>
+                <td><div th:replace="fragments.html :: date(dayNumber='30')"></div></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+<!--<div class="list-group" th:each="record:${records}">-->
+<!--    <div class="list-group-item list-group-item-action mt-2 shadow-sm">-->
+<!--        <div class="d-flex w-100 justify-content-between">-->
+<!--            <h5 style="margin:inherit;">@<span th:text="${record.id}"></span></h5>-->
+<!--        </div>-->
+<!--        <small th:text="${record.recordedAt}"></small>-->
+<!--        <p class="mb-1" th:utext="${record.systolic + '/' + record.diastolic}"></p>-->
+<!--    </div>-->
+<!--</div>-->
+</div>
 </body>
 </html>
