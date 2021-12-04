@@ -3,6 +3,7 @@ package com.tts.Heart.Rate.Monitor.service;
 import com.tts.Heart.Rate.Monitor.repository.RecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.tts.Heart.Rate.Monitor.model.Record;
 
 import java.util.ArrayList;
 import java.util.Calendar;
